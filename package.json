@@ -1,8 +1,12 @@
 {
-  "name": "the-road-to-next-app-developer-journey",
-  "version": "0.1.0",
-  "private": true,
+  "name": "my-nextjs",
+  "version": "1.0.0",
+  "author": "rchuvilev",
+  "private": false,
   "scripts": {
+    "bun:local-dev": "bun run --bun dev",
+    "bun:local-test": "bun test",
+    "bun:local-checks": "bun test && bun run type && bun run lint && bun run build",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
