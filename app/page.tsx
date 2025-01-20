@@ -1,10 +1,8 @@
 'use server';
 import { Metadata } from 'next';
 import { SearchParams } from 'nuqs/server';
-import { Suspense } from 'react';
 import { FastImage } from '@/components/FastImage';
 import { FastVideo } from '@/components/FastVideo';
-import { Spinner } from '@/components/Spinner';
 import { DOMAINS_CONFIG, getDomain } from '@/DomainsConfig';
 import { searchParamsCache } from '@/utils/server.search-params';
 
@@ -26,7 +24,7 @@ export const generateMetadata = async (): Promise<Metadata> => {
 const HomePage = async ({ searchParams }: HomePageProps) => {
 	const searchParamsObj = searchParamsCache.parse(await searchParams);
 	return (
-		<Suspense fallback={<Spinner />}>
+		<>
 			<h1>HomePage</h1>
 			<FastImage src={'/__test__/image.png'} alt={'test image'} width={500} height={240} />
 			<FastVideo
@@ -37,7 +35,7 @@ const HomePage = async ({ searchParams }: HomePageProps) => {
 				controls={false}
 				playsInline={true}
 			/>
-		</Suspense>
+		</>
 	);
 };
 
