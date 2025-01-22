@@ -2,7 +2,7 @@ import { init } from 'next/dist/compiled/webpack/webpack';
 import TelegramBot, { Message, Metadata } from 'node-telegram-bot-api';
 
 const BOT_TOKEN: string = process.env.TELEGRAM_BOT_TOKEN as string;
-const IS_POLLING: boolean = true;
+const IS_POLLING: boolean = false;
 
 class TelegramBotClass {
     public instance: TelegramBot | null = null;
@@ -14,7 +14,9 @@ class TelegramBotClass {
             this.isInited = true;
         }
         this.instance = new TelegramBot(process.env.TELEGRAM_BOT_TOKEN as string, { polling: isPolling });
-        if (isPolling) {
+        if (!isPolling) {
+            this.instance.stopPolling();
+        } else {
             try {
                 this.instance.on('polling_error', async (error: any) => {});
                 this.instance.on('message', async (msg: Message, metadata: Metadata) => {
