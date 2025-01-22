@@ -5,6 +5,7 @@ import { FastImage } from '@/components/FastImage';
 import { FastVideo } from '@/components/FastVideo';
 import { DOMAINS_CONFIG, getDomain } from '@/DomainsConfig';
 import { searchParamsCache } from '@/utils/server.search-params';
+import { getTelegramBot } from '@/features/telegram-bot/TelegramBot';
 
 type HomePageProps = {
 	searchParams: Promise<SearchParams>;
@@ -23,8 +24,11 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
 	const searchParamsObj = searchParamsCache.parse(await searchParams);
+	const telegramBot = getTelegramBot();
+	//  console.log(2222222, await telegramBot.instance?.getUpdates({limit: 1})); // store offset of last update in db
+	console.log(2222222, await telegramBot.instance?.getUpdates()); // store offset of last update in db
 	return (
-		<>
+		<> 
 			<h1>HomePage</h1>
 			<FastImage src={'/__test__/image.png'} alt={'test image'} width={500} height={240} />
 			<FastVideo

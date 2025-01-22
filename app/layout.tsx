@@ -1,3 +1,5 @@
+'use server';
+
 import './globals.css';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
@@ -8,9 +10,7 @@ import { Toaster } from '@/components/ui/sonner';
 import { Footer } from '@/components/view/Footer';
 import { Header } from '@/components/view/Header';
 
-// FOR PERSISTENT, NOT RE-RENDERED LAYOUT COMPONENTS
-
-export default function RootLayout({
+export default async function RootLayout({
 	children,
 }: Readonly<{
 	children: React.ReactNode;

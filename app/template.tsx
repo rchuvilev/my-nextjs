@@ -1,3 +1,5 @@
+'use client';
+
 import { RedirectToast } from '@/components/RedirectToast';
 
 type RootTemplateProps = {
