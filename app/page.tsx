@@ -24,9 +24,8 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
 const HomePage = async ({ searchParams }: HomePageProps) => {
 	const searchParamsObj = searchParamsCache.parse(await searchParams);
-	const telegramBot = getTelegramBot();
-	//  console.log(2222222, await telegramBot.instance?.getUpdates({limit: 1})); // store offset of last update in db
-	console.log(2222222, await telegramBot.instance?.getUpdates()); // store offset of last update in db
+	const telegramBot = await getTelegramBot();
+	
 	return (
 		<> 
 			<h1>HomePage</h1>
